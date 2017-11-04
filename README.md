@@ -1,1 +1,1 @@
-# hackerrank-solutions
+# Solutions to various Algorithm, Data Structure and Artificial Intelligence Problems on HackerRank
