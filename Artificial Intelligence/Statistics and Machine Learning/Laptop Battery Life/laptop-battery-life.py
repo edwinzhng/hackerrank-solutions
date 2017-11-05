@@ -11,7 +11,7 @@ def regression():
 
     for i in range(0, 100):
         row = map(float, data.readline().strip().split(','))
-        if row[1] < 8.00:
+        if row[1] <= 8.00:
             x.append([row[0]])
             y.append([row[1]])
 
@@ -19,6 +19,8 @@ def regression():
 
     sample = ([[float(input())]])
     ans = reg.predict(sample)
+    if ans > 8.00:
+        ans = 8.00
     print(round(ans, 2))
 
 
