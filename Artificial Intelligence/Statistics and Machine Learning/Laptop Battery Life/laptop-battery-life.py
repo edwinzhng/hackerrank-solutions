@@ -4,30 +4,21 @@ import numpy as np
 
 def regression():
     data = open('trainingdata.txt')
-    laptop = []
-    tv = []
+    x = []
+    y = []
 
-    poly = PolynomialFeatures(degree = 4)
     reg = linear_model.LinearRegression()
 
     for i in range(0, 100):
         row = map(float, data.readline().strip().split(','))
-        x = []
-        y = []
-        x.append(row[0])
-        y.append(row[1])
-        laptop.append(x)
-        tv.append(y)
+        if row[1] < 8.00:
+            x.append([row[0]])
+            y.append([row[1]])
 
-    f_ = poly.fit_transform(laptop)
-    reg.fit(f_, tv)
+    reg.fit(x, y)
 
-    s = []
-    sample = []
-    s.append(float(input()))
-    sample.append(s)
-    p_ = poly.fit_transform(sample)
-    ans = reg.predict(p_)
+    sample = ([[float(input())]])
+    ans = reg.predict(sample)
     print(round(ans, 2))
 
 
