@@ -1,5 +1,5 @@
 #include<iostream>
-#define INT_MAX 99999;
+#define INT_MAX 99999
 using namespace std;
 
 int main()
@@ -42,7 +42,7 @@ int main()
 	while(q--)
 	{
 		cin >> source >> target;
-		if(distances[source][target]==99999)
+		if(distances[source][target] == INT_MAX)
 			cout << "-1" << endl;
 		else
 			cout << distances[source][target] << endl;

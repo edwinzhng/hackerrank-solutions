@@ -1,8 +1,5 @@
-#include <cmath>
-#include <cstdio>
 #include <vector>
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 long long DFS_Get_Distance(vector< vector<int> >& edgeList, vector<int>& visited, int node, long long &distance){

@@ -5,6 +5,7 @@ from sklearn.preprocessing import PolynomialFeatures
 import numpy as np
 
 def regression():
+    data = open("trainingdata.txt")
     reg
 
 if __name__ == '__main__':

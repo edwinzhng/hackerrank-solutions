@@ -1,8 +1,5 @@
-#include <cmath>
-#include <cstdio>
 #include <vector>
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 long long solve(vector<int>& prices, int n){
