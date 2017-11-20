@@ -1,9 +1,8 @@
-#include <cmath>
-#include <cstdio>
 #include <vector>
 #include <iostream>
 #include <algorithm>
 using namespace std;
+
 
 int main() {
     int q;
@@ -26,8 +25,6 @@ int main() {
         sort(B.begin(), B.end());
         reverse(B.begin(), B.end());
 
-
-
         for(int i = 0; i < n; i++){
             if(A[i] + B[i] < k){
                 possible = false;
@@ -40,7 +37,5 @@ int main() {
             cout << "NO\n";
         }
     }
-
-
     return 0;
 }

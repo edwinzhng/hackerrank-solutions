@@ -2,39 +2,65 @@
 #include <string>
 using namespace std;
 
-bool isPalindrome(string s) {
-    int first = 0, last = s.length() - 1;
-    while(first <= last) {
-        if(s[first++] != s[last--]) {
-            return false;
-        }
-    }
-    return true;
-}
+string solve(string s, int n, int k) {
+    bool changed[n] = { false };
+    int last = n - 1, first = 0;
 
-string changeNumber(string s, int move, int k) {
-    string max = s, temp = s;
-    if(move == k) {
-        return s;
-    }
-    for(int i = 0; i < s.length(); i++) {
-        for(int j = 0; j < 10; j++) {
-            temp = s;
-            temp[i] = '0' + j;
-            temp = changeNumber(temp, move + 1, k);
-            if(isPalindrome(temp) && temp > max) {
-                max = temp;
+    // first check if palindrome can be created
+    while(first <= last) {
+        if(s[first] != s[last]) {
+            if(s[first] > s[last]) {
+                s[last] = s[first];
+                changed[last] = true;
+                k--;
+            }
+            else {
+                s[first] = s[last];
+                changed[first] = true;
+                k--;
             }
         }
+        if(k < 0) {
+            return "-1";
+        }
+        first++;
+        last--;
     }
-    return isPalindrome(max) ? max : "-1";
+
+    first = 0;
+    last = n - 1;
+
+    // set indices to maximum possible values
+    while(first <= last) {
+        if(s[first] != '9' && s[last] != '9') {
+            if(changed[first] || changed[last]) {
+                s[first] = '9';
+                s[last] = '9';
+                k--;
+            }
+            else {
+                if(k >= 2 || first == last) {
+                    s[first] = '9';
+                    s[last] = '9';
+                    k -= 2;
+                }
+            }
+        }
+        if(k <= 0) {
+            return s;
+        }
+        first++;
+        last--;
+    }
+
+    return s;
 }
 
 int main() {
     int n, k;
     string s, ans;
     cin >> n >> k >> s;
-    ans = changeNumber(s, 0, k);
+    ans = solve(s, n, k);
     cout << ans << endl;
     return 0;
 }
